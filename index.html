@@ -1,0 +1,29 @@
+<html lang="en">
+   <head>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="styles.css">
+      <script src="https://accounts.google.com/gsi/client" async defer></script>
+      <title>Sign In with Google / Facebook</title>
+   </head>
+
+   <body class="text-center">
+      <script src="facebook-sdk.js"></script>
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=1261850047892148&autoLogAppEvents=1" nonce="3DrD3idj"></script>
+     
+      <main class="form-signin w-100 m-auto">
+         <img src="qh.png">
+         <h1 class=" h3 mb-3 fw-normal">Sign in with google or facebook</h1>
+         <!-- Continue with Google Button -->
+         <div id="buttonDiv" class="d-flex m-2 align-items-center justify-content-center""></div>
+         <!-- Continue with Facebook Button -->
+         <button id="fblogin" class="fb btn">
+         <i class="fa fa-facebook fa-fw"></i> Continue with Facebook
+         </button>
+      </main>
+      
+      <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+      <script src=" index.js"></script>
+   </body>
+</html>

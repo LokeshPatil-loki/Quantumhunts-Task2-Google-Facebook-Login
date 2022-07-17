@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+         />
+      <link rel="stylesheet" href="styles.css">
+      <title>User</title>
+      
+      <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+      <script>
+         var user;
+         if(sessionStorage.getItem("loggedInUser")){
+             var user = JSON.parse(sessionStorage.getItem("loggedInUser"));
+         }else{
+             location.href = "index.html";
+         }
+      </script>
+   </head>
+   <body class="text-center">
+      <script src="facebook-sdk.js"></script>
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=1261850047892148&autoLogAppEvents=1" nonce="3DrD3idj"></script>
+      
+      <main class="form-signin w-100 m-auto">
+        
+         <h1>Logged In from <span id="from"></span></h1>
+
+         <img id="profile-pic" src="placeholder.png" />
+
+         <div class="form-floating">
+            <input type="text" readonly class="form-control" id="name" placeholder="name@example.com">
+            <label for="floatingInput">Name</label>
+         </div>
+
+         <div class="form-floating">
+            <input type="email" readonly class="form-control" id="email" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+         </div>
+
+         <button id="signout" class="w-100 btn btn-lg btn-primary fb">Sign out</button>
+
+      </main>
+
+      <script>
+         let profilePic = document.getElementById("profile-pic");
+         let name = document.getElementById("name");
+         let email = document.getElementById("email");
+         let btnSignout = document.getElementById("signout");
+         let from = document.getElementById("from")
+         profilePic.setAttribute("src",user.picture);
+         name.setAttribute("value",user.name);
+         email.setAttribute("value",user.email);
+         from.innerText = user.from;
+         btnSignout.addEventListener("click",e => {
+             sessionStorage.removeItem("loggedInUser");
+             location.href = "/";
+         });
+      </script>
+   </body>
+</html>
